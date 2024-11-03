@@ -1,0 +1,38 @@
+<script type =  "text/javascript">
+
+    let callStack = [];
+
+    callStack.push({'atWhere':'starting', 'number': 50});
+    let returnValue = 1;
+
+    while(callStack.length > 0){
+
+        document.write(returnValue + "<br>");
+
+        let number = callStack[callStack.length - 1]['number'];
+        let atWhere = callStack[callStack.length - 1]['atWhere'];
+
+
+        if(atWhere === 'starting'){
+
+            callStack[callStack.length - 1]['atWhere'] = 'started';
+
+            if(number === 1){
+                returnValue = 1;
+                callStack.pop();
+                continue;
+            }else{
+                callStack.push({'atWhere':'starting', 'number': number - 1});
+                continue;
+            }
+
+        }else if(atWhere === 'started')
+        {
+            returnValue = returnValue* number;
+            callStack.pop();
+            continue;
+        }
+    }
+    document.write(returnValue + "<br>");
+
+</script>
