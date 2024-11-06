@@ -1,0 +1,41 @@
+<script>
+    function findSubstringIterative(needle, haystack){
+        let i = 0;
+
+        while( i < (haystack.length))
+        {
+            if(haystack.substring(i, i + needle.length) == needle){
+                return i;
+            }
+            i = i+1;
+
+        }
+        return -1;
+    }
+
+    function findSubstringRecursive(needle, haystack,i)
+    {
+        if(i == undefined){
+            i =0;
+        }
+
+        if(i >= haystack.length)
+        {
+            return -1;
+        }
+
+        if(haystack.substring(i, i + needle.length) == needle)
+        {
+            return i;
+        }else
+        {
+            return findSubstringRecursive(needle, haystack, i+1);
+        }
+        
+
+    }
+
+    document.write(findSubstringIterative("cat","i had a sweet cat."), "<br>");
+    document.write("This is a recursive function: ",findSubstringRecursive("cat", "i had a sweet cat."))
+
+</script>
